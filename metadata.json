@@ -1,0 +1,5 @@
+{
+  "name": "Amplificador de Sonidos",
+  "description": "Una aplicación para amplificar el sonido captado por el micrófono en tiempo real. Se recomienda el uso de auriculares para evitar retroalimentación.",
+  "requestFramePermissions": ["microphone"]
+}

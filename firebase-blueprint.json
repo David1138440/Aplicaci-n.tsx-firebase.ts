@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile information synchronized from Google Sign-In.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique identifier for the user." },
+        "displayName": { "type": "string", "description": "User's display name." },
+        "email": { "type": "string", "description": "User's email address." },
+        "photoURL": { "type": "string", "description": "User's profile photo URL." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the user first signed in." }
+      },
+      "required": ["uid", "email"]
+    },
+    "Recording": {
+      "title": "Audio Recording",
+      "description": "Metadata for an audio recording saved by the user.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique recording ID." },
+        "userId": { "type": "string", "description": "UID of the owner." },
+        "name": { "type": "string", "description": "Name of the recording." },
+        "duration": { "type": "number", "description": "Duration in seconds." },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the recording was made." },
+        "audioData": { "type": "string", "description": "Base64 encoded audio data (for small recordings) or URL." }
+      },
+      "required": ["id", "userId", "name", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents."
+    },
+    "/recordings/{recordingId}": {
+      "schema": "Recording",
+      "description": "User recordings."
+    }
+  }
+}
